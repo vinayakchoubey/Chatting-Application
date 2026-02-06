@@ -23,7 +23,7 @@ const __dirname = path.resolve();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: process.env.CLIENT_URL || "https://chatting-application-flax.vercel.app",
     credentials: true,
   })
 );
