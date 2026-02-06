@@ -259,10 +259,13 @@ export const checkAuth = (req, res) => {
 export const googleCallback = async (req, res) => {
   try {
     generateToken(req.user._id, res);
-    res.redirect(process.env.CLIENT_URL);
+    // Explicitly fallback to production URL if in production
+    const clientUrl = process.env.CLIENT_URL || "https://chatting-application-flax.vercel.app";
+    res.redirect(clientUrl);
   } catch (error) {
     console.log("Error in googleCallback", error.message);
-    res.redirect(`${process.env.CLIENT_URL}/login`);
+    const clientUrl = process.env.CLIENT_URL || "https://chatting-application-flax.vercel.app";
+    res.redirect(`${clientUrl}/login`);
   }
 };
 
