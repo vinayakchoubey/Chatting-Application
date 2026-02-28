@@ -13,7 +13,7 @@ import { useThemeStore } from "./store/useThemeStore";
 import { useEffect } from "react";
 
 import { Loader2 } from "lucide-react";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 import PageTransition from "./components/PageTransition";
 
 const App = () => {

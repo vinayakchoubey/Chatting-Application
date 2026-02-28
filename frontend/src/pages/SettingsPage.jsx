@@ -3,7 +3,7 @@ import { useThemeStore } from "../store/useThemeStore";
 import { useAuthStore } from "../store/useAuthStore";
 import { Send, Eye, EyeOff, User, Lock, Palette, Globe, Camera, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { useState } from "react";
 
 const PREVIEW_MESSAGES = [
