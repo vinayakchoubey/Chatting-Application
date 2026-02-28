@@ -23,7 +23,18 @@ const __dirname = path.resolve();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "https://chatting-application-flax.vercel.app",
+    origin: function (origin, callback) {
+      const allowedOrigins = process.env.CLIENT_URL
+        ? process.env.CLIENT_URL.split(",")
+        : ["https://chatting-application-flax.vercel.app"];
+
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
